@@ -2,7 +2,7 @@
 class GithubRepository {
   final String name;
   final String icon;
-  final String language;
+  final String? language;
   final int stargazers;
   final int watchers;
   final int forks;
