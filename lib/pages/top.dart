@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:yumemi_codecheck/models/repository.dart';
 import 'package:yumemi_codecheck/pages/detail.dart';
 import 'package:yumemi_codecheck/provider/github.dart';
+import 'package:yumemi_codecheck/provider/network.dart';
 
 class TopPage extends HookConsumerWidget {
   const TopPage({super.key});
@@ -22,6 +23,18 @@ class TopPage extends HookConsumerWidget {
       return null;
     }, const []);
     return Scaffold(
+      bottomSheet: Visibility(
+        visible: ref.watch(networkProvider),
+        child: Container(
+          color: Theme.of(context).colorScheme.tertiaryContainer,
+          height: 24,
+          width: double.infinity,
+          alignment: Alignment.center,
+          child: const Text(
+            '接続していません',
+          ),
+        ),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
