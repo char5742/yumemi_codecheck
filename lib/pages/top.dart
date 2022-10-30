@@ -24,7 +24,7 @@ class TopPage extends HookConsumerWidget {
     }, const []);
     return Scaffold(
       bottomSheet: Visibility(
-        visible: ref.watch(networkProvider),
+        visible: !ref.watch(networkProvider),
         child: Container(
           color: Theme.of(context).colorScheme.tertiaryContainer,
           height: 24,
