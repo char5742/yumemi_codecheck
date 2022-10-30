@@ -27,6 +27,12 @@ class DetailPage extends StatelessWidget {
                       repository.icon,
                       width: 32,
                       height: 32,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const SizedBox(
+                          width: 32,
+                          height: 32,
+                        );
+                      },
                     ),
                     const Padding(padding: EdgeInsets.only(left: 8.0)),
                     Expanded(
