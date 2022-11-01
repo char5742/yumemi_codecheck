@@ -6,7 +6,7 @@ final networkStreamProvider = StreamProvider<ConnectivityResult>((_) async* {
   yield* Connectivity().onConnectivityChanged;
 });
 
-/// Checks the connection status of the device
+/// ネットワークの接続状態
 final networkProvider = Provider((ref) {
   final state = ref.watch(networkStreamProvider
       .select((value) => value.value != ConnectivityResult.none));

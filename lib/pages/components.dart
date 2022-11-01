@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// データ取得エラー画面
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({super.key});
 

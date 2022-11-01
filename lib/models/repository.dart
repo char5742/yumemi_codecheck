@@ -1,11 +1,24 @@
-// リポジトリ名、オーナーアイコン、プロジェクト言語、Star 数、Watcher 数、Fork 数、Issue 数
+/// 必要なGithub Repositoryの情報
 class GithubRepository {
+  /// リポジトリ名
   final String name;
+
+  /// ユーザーアイコンURL
   final String icon;
+
+  /// プロジェクト言語
   final String? language;
+
+  /// Star数
   final int stargazers;
+
+  /// Wacher数
   final int watchers;
+
+  /// Fork数
   final int forks;
+
+  /// open状態のissue数
   final int openIssues;
 
   const GithubRepository({
@@ -18,6 +31,7 @@ class GithubRepository {
     required this.openIssues,
   });
 
+  /// github apiからのjsonレスポンスを[GithubRepository]に変換
   factory GithubRepository.fromJson(Map<String, dynamic> json) {
     return GithubRepository(
       name: json['full_name'],

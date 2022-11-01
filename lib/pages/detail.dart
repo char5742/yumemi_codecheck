@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:yumemi_codecheck/models/repository.dart';
 
+/// [repository]の詳細ページ
 class DetailPage extends StatelessWidget {
   final GithubRepository repository;
   const DetailPage(this.repository, {super.key});
