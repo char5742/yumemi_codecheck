@@ -49,8 +49,10 @@ class DetailPage extends StatelessWidget {
                     RichText(
                       text: TextSpan(children: [
                         TextSpan(
-                            text: NumberFormat.compact()
-                                .format(repository.stargazers)),
+                          text: NumberFormat.compact()
+                              .format(repository.stargazers),
+                          style: theme.textTheme.bodyMedium,
+                        ),
                         TextSpan(
                           text: ' Star',
                           style: theme.textTheme.bodyMedium
@@ -62,8 +64,9 @@ class DetailPage extends StatelessWidget {
                     RichText(
                       text: TextSpan(children: [
                         TextSpan(
-                            text: NumberFormat.compact()
-                                .format(repository.forks)),
+                          text: NumberFormat.compact().format(repository.forks),
+                          style: theme.textTheme.bodyMedium,
+                        ),
                         TextSpan(
                           text: ' Fork',
                           style: theme.textTheme.bodyMedium
