@@ -4,9 +4,14 @@ import 'package:http/http.dart' as http;
 import 'package:yumemi_codecheck/models/repository.dart';
 
 class FetchResult {
+  /// １ページ分のRepositoryのリスト
   final List<GithubRepository> repositories;
+
+  /// 検索結果の総数
   final int totalCount;
-  final bool incompleteResults;
+
+  /// 検索が時間内に終わったかどうか
+  final bool incompleteResults; // TODO: 検索が時間内に終わらない場合の処理が必要
   const FetchResult({
     required this.repositories,
     required this.totalCount,
@@ -24,6 +29,9 @@ class StatusCodeException implements Exception {
 }
 
 class GithubService {
+  /// [keyword]による検索結果を返す
+  ///
+  /// [page]目を取得する。１ページあたりは[perPage]個
   static Future<FetchResult> fetchRepositoriesByKeyword(
     String keyword, {
     int perPage = 30,

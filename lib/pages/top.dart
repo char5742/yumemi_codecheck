@@ -7,6 +7,7 @@ import 'package:yumemi_codecheck/pages/detail.dart';
 import 'package:yumemi_codecheck/provider/github.dart';
 import 'package:yumemi_codecheck/provider/network.dart';
 
+/// トップページ
 class TopPage extends HookConsumerWidget {
   const TopPage({super.key});
 
@@ -51,12 +52,14 @@ class TopPage extends HookConsumerWidget {
   }
 }
 
+/// 検索結果の表示
 class RepositoryItems extends HookConsumerWidget {
   const RepositoryItems({super.key});
 
   @override
   Widget build(context, ref) {
     final scrollController = useScrollController();
+    // 最下部までスクロールされたら次の１ページ分の情報を取得する
     useEffect(() {
       scrollController.addListener(() {
         if (scrollController.offset ==
@@ -79,6 +82,7 @@ class RepositoryItems extends HookConsumerWidget {
           .repositories
           .map(RepositoryInfo.new)
           .toList();
+      // 検索結果が空のときは、[RefreshIndicatorの挙動を抑えるために非表示
       return Visibility(
         visible: repositoryInfoList.isNotEmpty,
         child: Expanded(
@@ -100,6 +104,7 @@ class RepositoryItems extends HookConsumerWidget {
   }
 }
 
+/// リポジトリの概要表示
 class RepositoryInfo extends StatelessWidget {
   final GithubRepository repository;
   const RepositoryInfo(this.repository, {super.key});

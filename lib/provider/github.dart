@@ -38,7 +38,11 @@ class RepositoryNotifier extends StateNotifier<RepositoryState> {
   late String _keyword;
   final int perPage = 30;
 
+  /// [keyword]をもとにgithubのrepositoryを取得
+  ///
+  /// 1ページだけ取得し、１ページあたりは[perPage] (default 30)個である。
   Future<void> fetchFirst(String keyword) async {
+    // ネットワークに接続していなければ何もしない
     if (!ref.read(networkProvider)) return;
     state = state.copyWith(isLoading: true);
     try {
@@ -47,6 +51,7 @@ class RepositoryNotifier extends StateNotifier<RepositoryState> {
         perPage: perPage,
       );
       _keyword = keyword;
+      // 取得数よりも検索結果数が多ければ次のページが存在する
       _hasNext = result.totalCount > perPage;
       _page = 1;
       state =
@@ -56,7 +61,9 @@ class RepositoryNotifier extends StateNotifier<RepositoryState> {
     }
   }
 
+  /// [fetchFirst]で取得しきれなかった場合に追加で１ページを取得する
   Future<void> fetchNext() async {
+    // 次のページがなければ何もしない
     if (!(_hasNext && ref.read(networkProvider))) return;
     try {
       final result = await GithubService.fetchRepositoriesByKeyword(
@@ -73,6 +80,7 @@ class RepositoryNotifier extends StateNotifier<RepositoryState> {
     }
   }
 
+  /// 最初の１ページ分だけ再取得する
   Future<void> fetchRetry() async {
     if (!ref.read(networkProvider)) return;
     try {
