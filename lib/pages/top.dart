@@ -36,6 +36,7 @@ class TopPage extends HookConsumerWidget {
               autofocus: true,
               controller: textController,
               textInputAction: TextInputAction.search,
+              decoration: const InputDecoration(hintText: 'キーワード検索'),
               onEditingComplete: () {
                 if (textController.text.isEmpty) return;
                 primaryFocus?.unfocus();
