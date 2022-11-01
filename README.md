@@ -1,16 +1,11 @@
 # yumemi_codecheck
 
-A new Flutter project.
+株式会社ゆめみの[コードチェック課題](https://github.com/yumemi-inc/flutter-engineer-codecheck)のために作成したもの。
 
-## Getting Started
+## Run the App
 
-This project is a starting point for a Flutter application.
+他の Flutter App 同様に次のコマンドで実行できます。
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+flutter run
+```
